@@ -9,6 +9,17 @@ javascript
 		The rectangle location should be based on the click location
 	2. Clear the canvas when the user clicks the clear button.
 		put your html and canvas files in the workshop under canvas
+
+Connect the dots, la la la
+
+Create the page demonstrated in class today. You Should use the same html/javascript files that you had from yesterday.
+
+javascript
+Your javascript code should be able to to do, at a minimum 2 things
+1. Draw a connected series of dots inside the canvas as the user clicks inside it.
+2. Clear the canvas when the user clicks the clear button.
+
+
 */
 
 var canvas = document.getElementById("miley");
@@ -19,18 +30,27 @@ button.addEventListener("click", function(e){
 	context.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);	
 });
 
+
+context.beginPath();
+
+
 var drawSomethin = function() {
 	var x = event.clientX;
-    var y = event.clientY;
-	context.fillRect(x,y,100,200);
+    var y = event.clientY - 60;
+    context.arc(x,y,15,0, 2*Math.PI);
+    context.lineTo(x,y);
+    context.stroke()
+	/*context.fillRect(x,y,100,200);*/
 }
 
 
-/*
-var clear = function() {
 
-}
-*/
+
+context.fillStyle = "red";
+context.fill();
+
+
+
 
 canvas.addEventListener('click', drawSomethin);
 
