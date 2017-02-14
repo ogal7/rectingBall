@@ -12,8 +12,12 @@ javascript
 */
 
 var canvas = document.getElementById("miley");
-var context = canvas.getContext('2d')
+var context = canvas.getContext('2d');
+var button = document.getElementById("og");
 
+button.addEventListener("click", function(e){
+	context.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);	
+});
 
 var drawSomethin = function() {
 	var x = event.clientX;
