@@ -26,31 +26,34 @@ var canvas = document.getElementById("miley");
 var context = canvas.getContext('2d');
 var button = document.getElementById("og");
 
-button.addEventListener("click", function(e){
-	context.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);	
-});
+context.fillStyle = "red";
 
-
-context.beginPath();
-
-
-var drawSomethin = function() {
-	var x = event.clientX;
-    var y = event.clientY - 60;
-    context.arc(x,y,15,0, 2*Math.PI);
-    context.lineTo(x,y);
-    context.stroke()
-	/*context.fillRect(x,y,100,200);*/
+var clear = function(event){
+	context.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+	context.beginPath();
 }
 
 
 
+var drawSomethin = function() {
+	var x = event.clientX - 8;
+    var y = event.clientY - 80;
+    context.lineTo(x,y);
+    context.stroke();
+    context.beginPath();
+    context.arc(x,y,15,0, 2*Math.PI);
+    context.fill();
+    context.moveTo(x,y);
+    context.stroke();
+}
 
-context.fillStyle = "red";
-context.fill();
+var drawRect = function(){
+	var x = event.clientX;
+	var y = event.clientY - 60;
+	context.fillRect(x,y,100,200);
+}
 
 
-
-
+button.addEventListener("click",clear);
 canvas.addEventListener('click', drawSomethin);
 
